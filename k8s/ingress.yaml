@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: voting-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: voting.188.166.206.178.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: voting-app-service
+            port:
+              number: 80
