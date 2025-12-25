@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: voting-app-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: voting-app
@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
       - name: voting-app
-        image: dockersamples/examplevotingapp_vote:before
+        image: fxthur/voting-app:latest
         ports:
         - containerPort: 80
         env:
         - name: REDIS_HOST
-          value: "redis-svc"
+          value: "redis"
         resources:
           requests:
             cpu: 100m
